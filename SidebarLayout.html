@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    display: block;
+}
+html, body {
+    overflow: hidden;
+}
+.container {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) minmax(220px, 3fr);
+    grid-template-rows: minmax(50px, 100px) auto minmax(100px,200px);
+    grid-template-areas: 
+        "header header header"
+        "aside board board"
+        "aside bot bot";
+    height: 100vh;
+}
+.container > div {
+    width: 100%;
+    height: 100%;
+}
+.header {
+    border-right-color: #000;
+    grid-area: header;
+    background-color: #f0f0f0;
+}
+.btn-box {
+    width: 100px;
+    height: 50px;
+    z-index: 20;
+    background-color: #999;
+    display: flex;
+}
+#left-btn-box {
+    left: 0;
+    position: absolute;
+    top: 0;
+    justify-content: left;
+}
+#right-btn-box {
+    width: 150px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    justify-content: right;
+}
+.btn a {
+    display: block;
+    cursor: pointer;
+}
+.btn a i {
+    width: 38px;
+    height: 38px;
+    display: block;
+    font-size: 38px;
+    padding: 6px;
+}
+#board {
+    background-color: #666;
+    grid-area: board;
+}
+.node-deck {
+    background-color: #ccc;
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+}
+.node-deck ul {
+    width: 100%;
+}
+.node.card {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    font-size: 20px;
+    padding-left: 10px;
+    background-color: #fff;
+    margin-top: 10px;
+}
+.root-deck {
+    background-color: #999;
+    grid-area: bot;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 5px;
+    padding: 10px;
+}
+.root.card#add-root {
+    font-size: 30px;
+    line-height: 30px;
+}
+.root.card#add-root i {
+    color: #666;
+}
+.root.card {
+    width: 100px;
+    height: 50px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    box-shadow: #eee 0 0 20px -3px;
+    border-radius: 3px;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div id="left-btn-box" class="btn-box">
+                <div class="btn"><a>≡</a></div>
+            </div>
+            <div id="right-btn-box" class="btn-box">
+                <div class="btn"><a>⚙️</a></div>
+            </div>
+        </div>
+        <div class="node-deck">
+            <ul>
+                <li class="node card">Node 1</li>
+                <li class="node card">Node 2</li>
+                <li class="node card">Node 3</li>
+            </ul>
+        </div>
+        <div id="board"></div>
+        <div class="root-deck">
+            <div class="root card">Root 1</div>
+            <div class="root card">Root 2</div>
+            <div class="root card">Root 3</div>
+            <div class="root card" id="add-root">+</div>
+        </div>
+    </div>
+</body>
+</html>
